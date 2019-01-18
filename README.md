@@ -27,4 +27,5 @@ Predictor fills this matrix by preferred speed. Empty slots filled by 22m/s (Spe
 
 #### Behavioral planning
 This module implements dynamic programming approach. Algorithm calculates DP matrix based on matrix returned from prediction module. DP state is summ of preferred velocities up to range of prediction
+
 ![alt text][behavior]
