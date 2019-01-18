@@ -6,6 +6,7 @@
 [prediction1]: ./images/predictor_001.png
 [prediction2]: ./images/predictor_002.png
 [prediction3]: ./images/predictor_003.png
+[behavior]: ./images/behavior_004.png
 
 ### Goals
 In this project my goal is to safely navigate around a virtual highway with other traffic that is driving +- 10 MPH of the 50 MPH speed limit.
@@ -22,3 +23,8 @@ We don't need whole 3d array of predictions to plan trajectory, let's slice it: 
 
 ![alt text][prediction3]
 
+Predictor fills this matrix by preferred speed. Empty slots filled by 22m/s (Speed limit), occupied slots filled by speed of observable. Few slots after occupation smoothly increase speed to speed limit ( yellow slots )
+
+#### Behavioral planning
+This module implements dynamic programming approach. Algorithm calculates DP matrix based on matrix returned from prediction module. DP state is summ of preferred velocities up to range of prediction
+![alt text][behavior]
