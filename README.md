@@ -1,5 +1,5 @@
 # Path planning project
-
+[Video](https://www.youtube.com/watch?v=-EomKbKOcb4)
 
 [//]: # (Image References)
 
@@ -26,6 +26,9 @@ We don't need whole 3d array of predictions to plan trajectory, let's slice it: 
 Predictor fills this matrix by preferred speed. Empty slots filled by 22m/s (Speed limit), occupied slots filled by speed of observable. Few slots after occupation smoothly increase speed to speed limit ( yellow slots )
 
 #### Behavioral planning
-This module implements dynamic programming approach. Algorithm calculates DP matrix based on matrix returned from prediction module. DP state is summ of preferred velocities up to range of prediction
+This module implements dynamic programming approach. Algorithm calculates DP matrix based on matrix returned from prediction module. DP state is summ of preferred velocities up to range of prediction. Algorithm tries to select lane with maximum value ( kind of 'longest path algorithm' ). It also checks possible lane change maneuvers for each cell of DP matrix ( it's complicated to show on the scheme, but it standart approach of DP).
 
 ![alt text][behavior]
+
+
+To prevent aggressive lane changes i've introduced penalty for lane change maneuver (see ```src/config.h``` ```MANEUVER_PENALTY```)
