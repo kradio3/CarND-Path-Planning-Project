@@ -35,7 +35,7 @@ To prevent aggressive lane changes i've introduced penalty for lane change maneu
 ##### Change speed for maneuver
 In case of change lane maneuver algorithm will start change speed immediately. Preferred speed calculated as weighted summ for speed of current lane and speed of target lane:
 
-![Weighted summ](https://latex.codecogs.com/gif.latex?%5Calpha%20%5Ccdot%20v_%7Bcurrent%7D%20&plus;%20%281%20-%20%5Calpha%29%20%5Ccdot%20v_%7Btarget%7D)
+![Weighted summ](https://latex.codecogs.com/gif.latex?v%20%3D%20%5Calpha%20%5Ccdot%20v_%7Bcurrent%7D%20&plus;%20%281%20-%20%5Calpha%29%20%5Ccdot%20v_%7Btarget%7D)
 
 #### Trajectory generator
 This module takes preferred lane and preferred speed from behavioral planner and calculates 25 trajectory points for next 500ms. In case of acceleration/deacceleration distance will be changed between each pair of trajectory points. Distance between points calculated according to restrictions for max acceleration and jerk.
