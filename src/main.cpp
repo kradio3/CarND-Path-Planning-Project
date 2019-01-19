@@ -101,76 +101,9 @@ int main() {
       // Main car's localization Data
         Telemetry tl = TelemetryUtils::parse(j);
 
-
         json msgJson;
 
         BPosition next = behavior.next_position(predictor.update(tl), tl);
-
-      //  vector<SensorFusion> sf = tl.sensor_fusion;
-      //  for(unsigned int i=0; i<sf.size(); i++) {
-      //    double diff = sf[i].s - tl.s;
-      //    if(diff > 0 && diff < 30){
-      //      double check_speed = sqrt(sf[i].vx*sf[i].vx + sf[i].vy*sf[i].vy);
-
-      //      if(sf[i].d < (4*lane+4) && sf[i].d> (4*lane)){
-      //        double vs = sqrt(sf[i].vx*sf[i].vx + sf[i].vy*sf[i].vy);
-      //        velocity = vs*2.237 - 2;
-      //        cout<<"Ahead velocity "<<velocity<<endl;
-      //      }
-
-      //    }
-      //  }
-
-        //for(int i = 0; i < tl.sensor_fusion.size(); i++) {
-        //   //car is in our lane
-        //   float d = tl.sensor_fusion[i][6];
-
-        //   if(d< (2*4*lane+2) && d > (2+4*lane-2) ) {
-        //     double vx = tl.sensor_fusion[i][3];
-        //     double vy = tl.sensor_fusion[i][4];
-        //   }
-        //}
-
-
-        // TODO: define a path made up of (x,y) points that the car will visit sequentially every .02 seconds
-
-
-        /*
-        // Look at the car ahead 
-        if(prev_size > 0) {
-        tl.car_s - tl.end_path_s;
-        }
-
-        bool too_close = false;
-
-        //find ref_v to use
-        // loop through the sensor fusion list
-        for(int i = 0; i < tl.sensor_fusion.size(); i++) {
-        //car is in our lane
-        float d = tl.sensor_fusion[i][6];
-
-        if(d< (2*4*lane+2) && d > (2+4*lane-2) ) {
-        double vx = tl.sensor_fusion[i][3];
-        double vy = tl.sensor_fusion[i][4];
-        double check_speed = sqrt(vx*vx + vy*vy);
-        double check_car_s = tl.sensor_fusion[i][5];
-
-        //if using previous points can project s value out
-        check_car_s += (double) prev_size * .02 * check_speed;
-
-        //check s values greater than mine and S gap
-        if( check_car_s > tl.car_s && check_car_s-tl.car_s < 60) {
-        //ref_vel = check_speed;
-        //std::cout<<"Target car velocity " << check_speed<<std::endl;
-        if ( lane > 0) {
-        }
-        }
-
-        }
-        }
-        */
-
-
 
         Trajectory tr = trajectory_util.generate(tl, map, next.lane, next.speed);
 
